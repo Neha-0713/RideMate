@@ -63,3 +63,70 @@ POST /user/register
 - First name must be at least 3 characters long
 - Password must be at least 6 characters long
 - All required fields must be provided
+
+## User Profile
+Endpoint to retrieve the authenticated user's profile.
+
+### Endpoint
+```
+GET /users/profile
+```
+
+### Headers
+```
+Authorization: Bearer <token>
+```
+
+### Response
+
+#### Success (200 OK)
+```json
+{
+  "success": true,
+  "user": {
+    "fullname": {
+      "firstname": "string",
+      "lastname": "string"
+    },
+    "email": "string",
+    "_id": "string"
+  }
+}
+```
+
+#### Unauthorized (401)
+```json
+{
+  "message": "unauthorized"
+}
+```
+
+## User Logout
+Endpoint to logout a user by invalidating their token.
+
+### Endpoint
+```
+POST /users/logout
+```
+
+### Headers
+```
+Authorization: Bearer <token>
+```
+
+### Response
+
+#### Success (200 OK)
+```json
+{
+  "success": true,
+  "message": "Logged out successfully"
+}
+```
+
+#### Unauthorized (401)
+```json
+{
+  "message": "unauthorized"
+}
+```
